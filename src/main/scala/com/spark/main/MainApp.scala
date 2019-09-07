@@ -15,7 +15,9 @@ object MainApp extends App with SparkUtils{
                                      .add("body", StringType, true)
   
   val inputDF = spark.read.option("rowTag", "note").schema(customSchema).xml("/home/hadoop-master/sample.xml")
-  
+
+  inputDF.printSchema()
+
   inputDF.show()
   
   spark.close()
